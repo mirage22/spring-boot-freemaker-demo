@@ -24,7 +24,7 @@ public class MagicApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
         return application.sources(MagicApplication.class);
     }
-    
+
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
