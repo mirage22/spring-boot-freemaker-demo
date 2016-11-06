@@ -1,0 +1,21 @@
+group 'com.miko.springboot'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+apply from: 'libraries.gradle'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion")
+    testCompile "junit:junit:${junitVersion}"
+}
