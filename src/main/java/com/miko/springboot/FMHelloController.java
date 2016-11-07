@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-public class HelloController {
+public class FMHelloController {
 
 
     @RequestMapping("/")
@@ -21,8 +21,10 @@ public class HelloController {
     }
 
     @RequestMapping("/magic")
-    public String hello(Model model, @RequestParam(value = "word", required=false, defaultValue="MagicHappens") String word) {
+    public String magic(Model model, @RequestParam(value = "word", required=false, defaultValue="MagicHappens") String word) {
+        System.out.println("MAGIC");
         model.addAttribute("word", word);
         return "magic";
     }
+
 }
