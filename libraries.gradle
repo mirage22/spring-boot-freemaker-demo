@@ -1,4 +1,5 @@
 ext {
     junitVersion="4.11"
     springBootVersion="1.4.1.RELEASE"
+    pebbleVersion="2.2.3"
 }

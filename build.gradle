@@ -18,5 +18,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-velocity:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+    compile("com.mitchellbosecke:pebble-spring-boot-starter:$pebbleVersion")
     testCompile "junit:junit:${junitVersion}"
 }

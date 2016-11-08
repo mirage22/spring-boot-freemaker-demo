@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Miro Kopecky (@miragemiko)
  * @since 07.11.2016
  */
-
 @Controller
-public class VelocityHelloController {
+public class TLHelloController {
 
-    @RequestMapping(value = "/velocity")
-    public String test(Model model){
-        System.out.println("Test");
-        model.addAttribute("test", "Here is Velocity");
-        return "test";
+
+    @RequestMapping(value = "/thyme")
+    public String something(Model model){
+        System.out.println("Thymeleaf");
+        model.addAttribute("thyme", "The Thymeleaf");
+        return "thyme";
     }
 
 }
