@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2016. Miroslav Kopecky
+ * This MvcConfiguration.java is part of spring-boot-freemaker-demo.
+ *
+ *     spring-boot-freemaker-demo is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     spring-boot-freemaker-demo is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with spring-boot-freemaker-demo .  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.miko.springboot;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
@@ -75,7 +93,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         List<ViewResolver> resolvers = new LinkedList<>();
         resolvers.add(getFreeMakerViewResolver());
         resolvers.add(getVelocityViewResolver());
-//        resolvers.add(getPebbleViewResolver());
+        resolvers.add(getPebbleViewResolver());
         resolvers.add(getThymeleafViewResolver());
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
         resolver.setViewResolvers(resolvers);
@@ -91,20 +109,20 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
     //Pebble extension
     @Bean
-    public Loader templateLoader(){
+    public Loader templatePebbleLoader(){
         return new ServletLoader(servletContext);
     }
 
     @Bean
-    public SpringExtension springExtension() {
+    public SpringExtension pebbleSpringExtension() {
         return new SpringExtension();
     }
 
     @Bean
     public PebbleEngine pebbleEngine() {
         return new PebbleEngine.Builder()
-                .loader(this.templateLoader())
-                .extension(springExtension())
+                .loader(this.templatePebbleLoader())
+                .extension(pebbleSpringExtension())
                 .build();
     }
 
@@ -120,8 +138,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public ServletContextTemplateResolver getThymeleafTemplateResolver() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setPrefix("/thymeleaf/");
-        templateResolver.setSuffix(".html");
-//        templateResolver.setTemplateMode("XHTML");
+        templateResolver.setSuffix(".htm");
         return templateResolver;
     }
 }
