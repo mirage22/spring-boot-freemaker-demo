@@ -39,6 +39,8 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import javax.servlet.ServletContext;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -90,11 +92,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean(name = "viewResolver")
     public ViewResolver contentNegotiatingViewResolver( ContentNegotiationManager manager) {
-        List<ViewResolver> resolvers = new LinkedList<>();
-        resolvers.add(getFreeMakerViewResolver());
-        resolvers.add(getVelocityViewResolver());
-        resolvers.add(getPebbleViewResolver());
-        resolvers.add(getThymeleafViewResolver());
+        List<ViewResolver> resolvers =
+                Arrays.asList(
+                        getVelocityViewResolver(),
+                        getFreeMakerViewResolver(),
+                        getPebbleViewResolver()
+//                        getThymeleafViewResolver()
+                );
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
         resolver.setViewResolvers(resolvers);
         resolver.setContentNegotiationManager(manager);
