@@ -39,9 +39,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import javax.servlet.ServletContext;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -56,7 +54,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Autowired
     private ServletContext servletContext;
 
-    @Bean(name = "freeMakerViewResolver")
+    @Bean(name = "freeMarkerViewResolver")
     public ViewResolver getFreeMakerViewResolver() {
         FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
         resolver.setSuffix(".ftl");
